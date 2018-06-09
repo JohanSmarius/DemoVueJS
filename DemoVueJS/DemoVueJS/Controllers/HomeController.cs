@@ -12,7 +12,32 @@ namespace DemoVueJS.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var courses = new List<CourseModel>
+            {
+                new CourseModel()
+                {
+                    Name = "C# For Beginners",
+                    Duration = 40,
+                    StartDate = new DateTime(2018, 09, 01),
+                    Teacher = "Johan"
+                },
+                new CourseModel()
+                {
+                    Name = "ASP.NET MVC For Beginners",
+                    Duration = 40,
+                    StartDate = new DateTime(2018, 09, 07),
+                    Teacher = "Johan"
+                },
+                new CourseModel()
+                {
+                    Name = "HTML For Designers",
+                    Duration = 32,
+                    StartDate = new DateTime(2018, 10, 10),
+                    Teacher = "Kim"
+                }
+            };
+
+            return View(courses);
         }
 
         public IActionResult About()
@@ -32,6 +57,11 @@ namespace DemoVueJS.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult AddCourse()
+        {
+            return View();
         }
     }
 }

@@ -1,0 +1,24 @@
+﻿@model DemoVueJS.Models.CourseModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Add New Course</h2>
+
+<section>
+
+    <label asp-for="Name"></label>
+    <input asp-for="Name" /><br />
+    <br />
+    <label asp-for="StartDate"></label>
+    <input asp-for="StartDate" /><br />
+    <br />
+    <label asp-for="Duration"></label>
+    <input asp-for="Duration" /><br />
+
+
+
+
+</section>
