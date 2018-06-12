@@ -1,31 +1,66 @@
 ﻿@model IEnumerable<CourseModel>
 
 
-<div class="row">
+<div id="app">
+    {{message}}
+    
     <div class="col-md-12">
-        <table>
-            <thead>
+        @*<table>
+        <thead>
             <tr>
                 <td>Name</td>
                 <td>Start date</td>
                 <td>Duration</td>
                 <td>Teacher</td>
+                <td>Number of students</td>
+                <td></td>
             </tr>
-            <tbody>
-            @foreach (var course in Model)
-            {
-                <tr>
-                    <td>@course.Name</td>
-                    <td>@($"{course.StartDate:d}")</td>
-                    <td>@course.Duration</td>
-                    <td>@course.Teacher</td>
+        <tbody>*@
 
-                </tr>
-            }
-            </tbody>
-        </table>
+        @*<tr v-for="course in sortedCourses" v-bind:key="course.Id">
+            <course-details>
+
+                v-bind:course="course"
+                v-bind:courses="sortedCourses"
+
+            </course-details>
+            @*<td><a v-bind:href="course.Name">{{course.Name}}</a></td>
+            <td>{{course.Date}}</td>
+            <td>{{course.Duration}}</td>
+            <td>{{course.Teacher}}</td>
+            <td>{{course.NumberOfStudents}}</td>
+            <td><button v-on:click="addStudent(course.Id)">RSVP</button></td>
+        </tr>*@
+
+
+        @*</tbody>
+        </table>*@
+
+        <div v-for="course in Courses" v-bind:key="course.Id">
+            <course-details v-bind:course="course"
+                            v-bind:courses="sortedCourses">
+            </course-details>
+
+
+        </div>
+
+        <div class="duration" v-bind:class="{ 'red' : Courses.length >= 1 }">
+            {{message}}
+        </div>
+
+        <div v-if="totalNumberOfStudents < 2">Oops</div>
+        <div v-else-if="totalNumberOfStudents > 5">
+            Good year
+        </div>
         
-        <a asp-controller="Home"
-           asp-action="AddCourse">Add Course</a>
+        <button v-on:click="getCourses()">Get courses from server</button>
+
+        <router-link to="/new">Add new course</router-link>
+        
+        <router-view></router-view>
+
+        @*<a asp-controller="Home"
+           asp-action="AddCourse">Add Course</a>*@
     </div>
 </div>
+

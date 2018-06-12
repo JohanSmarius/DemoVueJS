@@ -33,3 +33,18 @@
         display: none;
     }
 }
+
+.duration {
+    border-color: aqua;
+    border-width: thin;
+
+}
+
+.red {
+    border-color: red !important;
+    border-width: thick !important;
+    border-left: 2px solid;
+    border-right: 2px solid;
+    border-bottom: 2px solid;
+    border-top: 2px solid;
+}
