@@ -9,36 +9,48 @@ const router = new VueRouter({
 
 
 var app = new Vue({
-    el: '#app',
+    el: "#app",
     router,
     data: {
-        message: 'Hello from VueJS',
-        Courses: undefined,
-        Courses: [
-            {
-                Id: 1,
-                Name: "VueJS With ASP.NET Core",
-                Date: "2018-06-15",
-                Duration: 10,
-                Teacher: "Johan",
-                //NumberOfStudents: 0
-            },
-            {
-                Id: 2,
-                Name: "TypeScript for .NET Developers",
-                Date: "2018-06-01",
-                Duration: 5,
-                Teacher: "Johan",
-                //NumberOfStudents: 0
-            }
-        ],
-        totalNumberOfStudents: 0
+        message: "Hello from VueJS",
+        //Courses: [
+        //    {
+        //        id: 1,
+        //        name: "VueJS With ASP.NET Core",
+        //        startdate: "2018-06-15",
+        //        duration: 10,
+        //        teacher: "Johan",
+        //        //NumberOfStudents: 0
+        //    },
+        //    {
+        //        id: 2,
+        //        name: "TypeScript for .NET Developers",
+        //        startdate: "2018-06-01",
+        //        duration: 5,
+        //        teacher: "Johan",
+        //        //NumberOfStudents: 0
+        //    }
+        //],
+        totalNumberOfStudents: 0,
+        ServerCourses: store.state.courses,
+        Courses: store.state.courses,
+    
+    },
+    filters: {
+        capitalize: function (value) {
+            return value.toUpperCase();
+        }
     },
     created() {
+        
+
         // Ctor
-        //EventBus.$on("add-student", e => this.totalNumberOfStudents += e.data.count);
+        EventBus.$on("add-student", e => this.totalNumberOfStudents += e.data.count);
     },
     computed: {
+        alternativeCourses() {
+            return store.state.courses;
+        },
         sortedCourses() {
             return this.Courses.sort((a, b) => {
                 if (a.Date < b.Date) {
@@ -72,14 +84,8 @@ var app = new Vue({
         getCourses() {
             // Ctor
             //EventBus.$on("add-student", e => this.totalNumberOfStudents += e.data.count);
-            axios.get('/api/Course')
-                .then(response => {
-                    for (i = 0; i < response.data.length; i++) {
-                        this.Courses.push(response.data[i]);
-                    }
-                    //app.$forceUpdate()
-
-                });
+            
+            store.getCourses();
         },
 
     },

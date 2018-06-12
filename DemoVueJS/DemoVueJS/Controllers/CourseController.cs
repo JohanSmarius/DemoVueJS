@@ -20,27 +20,27 @@ namespace DemoVueJS.Controllers
             {
                 new CourseModel()
                 {
-                    Id = 10,
-                    Name = "C# For Beginners",
-                    Duration = 40,
-                    StartDate = new DateTime(2018, 09, 01),
-                    Teacher = "Johan"
+                    id = 100,
+                    name = "C# For Beginners",
+                    duration = 40,
+                    startdate = new DateTime(2018, 09, 01),
+                    teacher = "Johan"
                 },
                 new CourseModel()
                 {
-                    Id = 11,
-                    Name = "ASP.NET MVC For Beginners",
-                    Duration = 40,
-                    StartDate = new DateTime(2018, 09, 07),
-                    Teacher = "Johan"
+                    id = 101,
+                    name = "ASP.NET MVC For Beginners",
+                    duration = 40,
+                    startdate = new DateTime(2018, 09, 07),
+                    teacher = "Johan"
                 },
                 new CourseModel()
                 {
-                    Id = 12,
-                    Name = "HTML For Designers",
-                    Duration = 32,
-                    StartDate = new DateTime(2018, 10, 10),
-                    Teacher = "Kim"
+                    id = 102,
+                    name = "HTML For Designers",
+                    duration = 32,
+                    startdate = new DateTime(2018, 10, 10),
+                    teacher = "Kim"
                 }
             };
             return courses;

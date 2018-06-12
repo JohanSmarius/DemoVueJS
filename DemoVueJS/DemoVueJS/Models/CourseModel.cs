@@ -7,12 +7,12 @@ namespace DemoVueJS.Models
 {
     public class CourseModel
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
 
-        public DateTime StartDate { get; set; }
-        public int Duration { get; set; }
+        public DateTime startdate { get; set; }
+        public int duration { get; set; }
 
-        public string Teacher { get; set; }
+        public string teacher { get; set; }
     }
 }
