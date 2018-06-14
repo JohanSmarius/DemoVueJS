@@ -15,10 +15,10 @@
             @foreach (var course in Model)
             {
                 <tr>
-                    <td>@course.Name</td>
-                    <td>@($"{course.StartDate:d}")</td>
-                    <td>@course.Duration</td>
-                    <td>@course.Teacher</td>
+                    <td>@course.name</td>
+                    <td>@($"{course.startdate:d}")</td>
+                    <td>@course.duration</td>
+                    <td>@course.teacher</td>
 
                 </tr>
             }
