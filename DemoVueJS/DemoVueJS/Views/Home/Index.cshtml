@@ -1,31 +1,33 @@
 ﻿@model IEnumerable<CourseModel>
 
 
-<div class="row">
-    <div class="col-md-12">
-        <table>
-            <thead>
-            <tr>
-                <td>Name</td>
-                <td>Start date</td>
-                <td>Duration</td>
-                <td>Teacher</td>
-            </tr>
-            <tbody>
-            @foreach (var course in Model)
-            {
-                <tr>
-                    <td>@course.name</td>
-                    <td>@($"{course.startdate:d}")</td>
-                    <td>@course.duration</td>
-                    <td>@course.teacher</td>
+<div id="app">
+    {{message | capitalize}}
 
-                </tr>
-            }
-            </tbody>
-        </table>
-        
-        <a asp-controller="Home"
-           asp-action="AddCourse">Add Course</a>
+    <div v-for="course in Courses" v-bind:key="course.Id">
+
+        <hr />
+        <course-details v-bind:course="course"
+                        v-bind:courses="Courses">
+        </course-details>
+
+
     </div>
+    <hr />
+    <div v-if="totalNumberOfStudents < 2">Oops: we don't have enough students</div>
+    <div v-else-if="totalNumberOfStudents > 5">
+        Yes: enough students registered!
+    </div>
+
+    <hr />
+    <div v-bind:class="{ 'red' : Courses.length >= 1 }">
+        {{message}}
+    </div>
+
+    <hr />
+    <router-link to="/new">Add new course</router-link>
+
+    <router-view></router-view>    
+    
+    <button v-on:click="getCourses()">Get courses from server</button>
 </div>
